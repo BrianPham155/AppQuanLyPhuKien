@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DuAnMau</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="sign_up">Don\'t have an account? <b>Signup</b></string>
+    <string name="Login">Already have an account? <b>Login</b></string>
+    <string name="edit"><u>Chỉnh sửa</u></string>
+    <string name="delete"><u>Xóa</u></string>
+</resources>
