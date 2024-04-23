@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu_ic);
 
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                        .replace(R.id.linearLayout, new ProductFragment())
+                                .commit();
         //choose item navigation
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -42,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Fragment fragment = null;
 
-                if(item.getItemId() == R.id.mQLSP){
+                if(item.getItemId() == R.id.mQLSP ){
                     fragment =  new ProductFragment();
                 } else if (item.getItemId() == R.id.mGioiThieu) {
                     fragment = new AboutFragment();
@@ -52,12 +59,13 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
 
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.linearLayout, fragment)
-                        .commit();
 
-                getSupportActionBar().setTitle(item.getTitle());
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.linearLayout, fragment)
+                            .commit();
+
+                    getSupportActionBar().setTitle(item.getTitle());
 
                 drawerLayout.closeDrawer(GravityCompat.START);
 
